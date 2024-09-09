@@ -42,8 +42,9 @@ export default async function Page({ params, searchParams }) {
       <div className="mb-6">
         <h3 className="text-xl font-semibold mb-2">Change Server</h3>
         <div className="flex flex-wrap gap-2">
-          {servers.map((server) => (
+          {servers.map((server,index) => (
               <Link 
+                key={index}
                 href={`/anime/gogoanime/stream?episodeId=${episodeId}&serverName=${server}`} 
                 className={`block bg-gray-200 text-gray-800 py-2 px-4 rounded text-center hover:bg-gray-300 ${serverName === server ? 'font-bold' : ''}`}
               >
@@ -59,7 +60,8 @@ export default async function Page({ params, searchParams }) {
         <ul className="flex flex-col space-y-2">
           {infodata.sources.map((source, index) => (
             <li key={index} className="flex items-center">
-              <a 
+              <a
+                 
                 href={source.url} 
                 target="_blank" 
                 rel="noopener noreferrer" 
