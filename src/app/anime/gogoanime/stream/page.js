@@ -2,8 +2,6 @@ import apiConfig from '../../../api.config.js'; // Adjust the import path as nee
 import { notFound } from 'next/navigation';
 import VideoPlayer from '@/app/ui/videoplayer.js';
 
-
-
 export default async function Page({ params, searchParams }) {
   const { episodeId = '', serverName = 'gogocdn' } = searchParams;
   
@@ -19,18 +17,26 @@ export default async function Page({ params, searchParams }) {
     notFound();
   }
 
+  // Find the source with quality 'default'
+  const defaultSource = infodata.sources.find(source => source.quality === 'default');
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Episode {episodeId}</h1>
       
+      {/* Show VideoPlayer only for the source with quality 'default' */}
+      {defaultSource && (
+        <div className="mb-6">
+          <VideoPlayer url={defaultSource.url} />
+        </div>
+      )}
+
       {/* Streaming Links */}
-      
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Available Streams</h2>
         <ul className="flex flex-col space-y-2">
           {infodata.sources.map((source, index) => (
             <li key={index} className="flex items-center">
-              <VideoPlayer url={source.url} />
               <a 
                 href={source.url} 
                 target="_blank" 

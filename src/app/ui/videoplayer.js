@@ -8,6 +8,7 @@ import 'plyr/dist/plyr.css';
 const VideoPlayer = ({ url }) => {
   const videoRef = useRef(null);
   const [qualities, setQualities] = useState([]);
+  const [selectedQuality, setSelectedQuality] = useState(0);
 
   useEffect(() => {
     const video = videoRef.current;
@@ -71,6 +72,22 @@ const VideoPlayer = ({ url }) => {
         crossOrigin="anonymous"
         playsInline
       ></video>
+      <div className="mt-4">
+        <label htmlFor="quality-select" className="block text-lg font-medium text-gray-700">Quality:</label>
+        <select
+          id="quality-select"
+          value={selectedQuality}
+          onChange={(e) => updateQuality(Number(e.target.value))}
+          className="mt-1 block w-full bg-white border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
+        >
+          <option value={0}>Auto</option>
+          {qualities.map((quality, index) => (
+            <option key={index} value={quality}>
+              {quality}p
+            </option>
+          ))}
+        </select>
+      </div>
     </div>
   );
 };

@@ -94,7 +94,9 @@ export default function Page() {
   return (
     <>
       <div className="mb-6">
-      <Link href="/anime/gogoanime/recent-episodes" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">Recent Episodes
+      <Link href="/anime/gogoanime/anime-list" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">anime list
+      </Link>
+      <Link href="/anime/gogoanime/recent-episodes" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 ml-2">Recent Episodes
       </Link>
         <Link href="/anime/gogoanime/popular" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 ml-2">Popular
         </Link>
