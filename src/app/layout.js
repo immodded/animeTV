@@ -2,6 +2,7 @@ import localFont from "next/font/local";
 import "./globals.css";
 import siteConfig from "./site.config";
 import { NavLinks } from '@/app/ui/nav-links'
+import Footer from "./ui/footer";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -30,9 +31,7 @@ export default function RootLayout({ children }) {
         </header>
         {children}
       
-      <footer className="bg-gray-800 text-white py-4 text-center">
-        © 2024 {siteConfig.name}
-      </footer>
+      <Footer />
       </body>
     </html>
   );
