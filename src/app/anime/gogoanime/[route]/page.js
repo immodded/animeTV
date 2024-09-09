@@ -1,5 +1,8 @@
 import apiConfig from '../../../api.config.js'; // Adjust the import path as needed
 import { Card } from '@/app/ui/cards.js';
+import Link from 'next/link';
+import { notFound } from 'next/navigation'
+
 
 export default async function Page({ params, searchParams }) {
   const { page = 1 } = searchParams;
@@ -8,6 +11,11 @@ export default async function Page({ params, searchParams }) {
 
   const res = await fetch(PageUrl);
   const episodes = await res.json();
+  if (!episodes['results']){
+    notFound()
+}
+  const currentPage = episodes['currentPage'];
+  const hasNextPage = episodes['hasNextPage'];
 
   return (
     <div className="p-4">
@@ -17,19 +25,27 @@ export default async function Page({ params, searchParams }) {
           <Card key={episode.id} episode={episode} />
         ))}
       </div>
-      <div className="pagination mt-4 flex justify-between">
+      <div className="pagination mt-4 flex justify-between items-center">
+        {/* Previous Page Link */}
         <Link
-          disabled={episodes['currentPage'] <= 1}
-          className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50">
+          href={{ pathname: `/anime/gogoanime/${route}`, query: { page: currentPage - 1 } }}
+          className={`px-4 py-2 bg-blue-500 text-white rounded ${currentPage <= 1 ? 'opacity-50 cursor-not-allowed' : ''}`}
+          aria-disabled={currentPage <= 1}
+        >
           Previous
         </Link>
-        <span className="self-center text-lg">{`Page ${episodes['currentPage']}`}</span>
-        <button
-          disabled={!episodes['hasNextPage']}
-          className="px-4 py-2 bg-blue-500 text-white rounded disabled:opacity-50"
+
+        {/* Current Page Display */}
+        <span className="self-center text-lg">{`Page ${currentPage}`}</span>
+
+        {/* Next Page Link */}
+        <Link
+          href={{ pathname: `/anime/gogoanime/${route}`, query: { page: parseInt(currentPage) + 1 } }}
+          className={`px-4 py-2 bg-blue-500 text-white rounded ${!hasNextPage ? 'opacity-50 cursor-not-allowed' : ''}`}
+          aria-disabled={!hasNextPage}
         >
           Next
-        </button>
+        </Link>
       </div>
     </div>
   );
