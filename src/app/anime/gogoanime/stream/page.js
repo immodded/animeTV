@@ -1,6 +1,9 @@
 import apiConfig from '../../../api.config.js'; // Adjust the import path as needed
 import { notFound } from 'next/navigation';
-import VideoPlayer from '@/app/ui/videoplayer.js';
+import dynamic from 'next/dynamic';
+const VideoPlayer = dynamic(() => import('@/app/ui/videoplayer.js'), {
+  ssr: false, 
+});
 
 export default async function Page({ params, searchParams }) {
   const { episodeId = '', serverName = 'gogocdn' } = searchParams;
@@ -20,16 +23,36 @@ export default async function Page({ params, searchParams }) {
   // Find the source with quality 'default'
   const defaultSource = infodata.sources.find(source => source.quality === 'default');
 
+  // Define the available servers
+  const servers = ["gogocdn", "streamsb", "vidstreaming"];
+
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">Episode {episodeId}</h1>
       
-      {/* Show VideoPlayer only for the source with quality 'default' */}
+      {/* Video Player */}
       {defaultSource && (
         <div className="mb-6">
           <VideoPlayer url={defaultSource.url} />
         </div>
       )}
+
+      {/* Change Server */}
+      <div className="mb-6">
+        <h3 className="text-xl font-semibold mb-2">Change Server</h3>
+        <ul className="flex flex-wrap gap-2">
+          {servers.map((server) => (
+            <li key={server}>
+              <a 
+                href={`/anime/gogoanime/stream?episodeId=${episodeId}&serverName=${server}`} 
+                className={`text-blue-500 hover:underline ${serverName === server ? 'font-bold' : ''}`}
+              >
+                {server}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </div>
 
       {/* Streaming Links */}
       <div className="mb-6">
