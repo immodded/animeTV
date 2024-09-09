@@ -1,5 +1,8 @@
 import apiConfig from '../../../api.config.js'; // Adjust the import path as needed
 import { notFound } from 'next/navigation';
+import VideoPlayer from '@/app/ui/videoplayer.js';
+
+
 
 export default async function Page({ params, searchParams }) {
   const { episodeId = '', serverName = 'gogocdn' } = searchParams;
@@ -21,11 +24,13 @@ export default async function Page({ params, searchParams }) {
       <h1 className="text-2xl font-bold mb-4">Episode {episodeId}</h1>
       
       {/* Streaming Links */}
+      
       <div className="mb-6">
         <h2 className="text-xl font-semibold mb-2">Available Streams</h2>
         <ul className="flex flex-col space-y-2">
           {infodata.sources.map((source, index) => (
             <li key={index} className="flex items-center">
+              <VideoPlayer url={source.url} />
               <a 
                 href={source.url} 
                 target="_blank" 
