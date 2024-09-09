@@ -1,6 +1,7 @@
 import apiConfig from '../../../api.config.js'; // Adjust the import path as needed
 import { notFound } from 'next/navigation';
 import dynamic from 'next/dynamic';
+import Link from 'next/link.js';
 const VideoPlayer = dynamic(() => import('@/app/ui/videoplayer.js'), {
   ssr: false, 
 });
@@ -40,18 +41,16 @@ export default async function Page({ params, searchParams }) {
       {/* Change Server */}
       <div className="mb-6">
         <h3 className="text-xl font-semibold mb-2">Change Server</h3>
-        <ul className="flex flex-wrap gap-2">
+        <div className="flex flex-wrap gap-2">
           {servers.map((server) => (
-            <li key={server}>
-              <a 
+              <Link 
                 href={`/anime/gogoanime/stream?episodeId=${episodeId}&serverName=${server}`} 
-                className={`text-blue-500 hover:underline ${serverName === server ? 'font-bold' : ''}`}
+                className={`block bg-gray-200 text-gray-800 py-2 px-4 rounded text-center hover:bg-gray-300 ${serverName === server ? 'font-bold' : ''}`}
               >
                 {server}
-              </a>
-            </li>
+              </Link>
           ))}
-        </ul>
+        </div>
       </div>
 
       {/* Streaming Links */}
@@ -80,8 +79,7 @@ export default async function Page({ params, searchParams }) {
             href={infodata.download} 
             target="_blank" 
             rel="noopener noreferrer" 
-            className="text-blue-500 hover:underline"
-          >
+           className="bg-gray-200 text-gray-800 py-2 px-4 rounded text-center hover:bg-gray-300">
             Download Episode
           </a>
         </div>
