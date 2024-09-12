@@ -1,23 +1,22 @@
 import Image from "next/image";
 import Link from "next/link";
+import siteConfig from "./site.config";
+
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-      <Link
-  href="/play?url=https://test-streams.mux.dev/x36xhzz/x36xhzz.m3u8"
-  className="inline-block bg-red-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transform transition-all hover:bg-red-700 hover:scale-105 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-opacity-50"
->
-  Produce Error
-</Link>
-
+    <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 p-8 sm:p-20">
+      <main className="flex flex-col items-center sm:items-start gap-6 max-w-lg text-center sm:text-left">
         <Image
           src="https://github.com/immodded.png"
           alt="Profile Image"
-          width={300} // Adjust the width as needed
-          height={300} // Adjust the height as needed
-          className="rounded-full filter grayscale"
+          width={120}
+          height={120}
+          className="rounded-full filter grayscale shadow-lg"
         />
+        <h1 className="text-3xl font-bold text-gray-800">{siteConfig.title}</h1>
+        <p className="text-gray-600 leading-relaxed">
+          {siteConfig.title} is a platform that lets you explore and watch anime by fetching content from publicly accessible APIs. We don’t store, host, or own any of the content; instead, we provide a simple, ad-free interface to browse and watch anime directly from third-party sources. Enjoy a vast library of anime without sign-ups or downloads. <strong>Note:</strong> We do not store or distribute content; all anime is streamed via links to public APIs.
+        </p>
       </main>
     </div>
   );

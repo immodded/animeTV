@@ -55,6 +55,12 @@ export function NavLinks() {
           >
             Anime
           </Link>
+          <Link
+            className={`block px-4 py-2 mt-2 rounded-md text-white md:mt-0 ${pathname === '/news/ann/recent-feeds' ? 'bg-blue-600' : 'hover:bg-blue-500'}`}
+            href="/news/ann/recent-feeds"
+          >
+            News
+          </Link>
         </div>
       </div>
     </nav>
