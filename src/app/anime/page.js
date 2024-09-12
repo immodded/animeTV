@@ -94,17 +94,25 @@ export default function Page() {
   return (
     <>
       <div className="mb-6">
-      <Link href="/anime/gogoanime/anime-list" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600">anime list
-      </Link>
-      <Link href="/anime/gogoanime/recent-episodes" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 m-2">Recent Episodes
-      </Link>
-        <Link href="/anime/gogoanime/popular" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 m-2">Popular
-        </Link>
-        <Link href="/anime/gogoanime/movies" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 m-2">Movies
-        </Link>
-        <Link href="/anime/gogoanime/top-airing" className="inline-block bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 m-2">Top Airing
-        </Link>
-      </div>
+  <div className="flex flex-wrap gap-4">
+    <Link href="/anime/gogoanime/anime-list" className="bg-gradient-to-r from-blue-500 to-indigo-500 text-white py-2 px-6 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gradient-to-l">
+      Anime List
+    </Link>
+    <Link href="/anime/gogoanime/recent-episodes" className="bg-gradient-to-r from-green-500 to-teal-500 text-white py-2 px-6 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gradient-to-l">
+      Recent Episodes
+    </Link>
+    <Link href="/anime/gogoanime/popular" className="bg-gradient-to-r from-purple-500 to-pink-500 text-white py-2 px-6 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gradient-to-l">
+      Popular
+    </Link>
+    <Link href="/anime/gogoanime/movies" className="bg-gradient-to-r from-red-500 to-orange-500 text-white py-2 px-6 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gradient-to-l">
+      Movies
+    </Link>
+    <Link href="/anime/gogoanime/top-airing" className="bg-gradient-to-r from-yellow-500 to-amber-500 text-white py-2 px-6 rounded-lg shadow-lg transform transition-all hover:scale-105 hover:bg-gradient-to-l">
+      Top Airing
+    </Link>
+  </div>
+</div>
+
       <h2 className="text-xl font-semibold mb-4">Genre</h2>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6">
         {genres.map(genre => (

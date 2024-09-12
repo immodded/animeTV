@@ -61,9 +61,7 @@ export default async function Page({ params, searchParams }) {
           {infodata.sources.map((source, index) => (
             <li key={index} className="flex items-center">
               <a
-                 
-                href={source.url} 
-                target="_blank" 
+                href={`/play?url=${source.url}`}
                 rel="noopener noreferrer" 
                 className="text-blue-500 hover:underline mr-2"
               >

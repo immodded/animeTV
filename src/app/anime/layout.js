@@ -2,9 +2,6 @@
 export default function AnimeLayout({ children }) {
   return (
     <div className="bg-gray-900 min-h-screen text-white">
-      <header className="p-4 bg-gray-800">
-        <h1 className="text-xl font-bold">Anime</h1>
-      </header>
       <main className="p-4">
         <form action="/anime/gogoanime/search" method="get" className="flex mb-4">
           <input
