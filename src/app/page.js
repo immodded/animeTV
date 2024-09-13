@@ -7,11 +7,11 @@ export default function Home() {
     <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 p-8 sm:p-20">
       <main className="flex flex-col items-center sm:items-start gap-6 max-w-lg text-center sm:text-left">
         <Image
-          src="https://github.com/immodded.png"
-          alt="Profile Image"
+          src="/logo.webp"
+          alt="A vibrant and simple logo for an open-source anime TV streaming site named 'ANIMETV' created by 'MODD'."
           width={120}
           height={120}
-          className="rounded-full filter grayscale shadow-lg"
+          className="rounded-full shadow-lg"
         />
         <h1 className="text-3xl font-bold text-gray-800">{siteConfig.title}</h1>
         <p className="text-gray-600 leading-relaxed">
