@@ -1,5 +1,5 @@
 const apiConfig = {
-    base: 'https://api-consumet-six.vercel.app',
+    base: process.env.API,
     category: {
       anime: {
         gogoanime: {
