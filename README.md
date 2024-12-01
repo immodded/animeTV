@@ -19,3 +19,6 @@ AnimeTV is a platform that lets you explore and watch anime by fetching content 
 ## License
 
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+# support
+https://www.buymeacoffee.com/immodded
